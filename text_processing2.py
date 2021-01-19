@@ -67,10 +67,9 @@ def to_camel_case(underscore_str):
             >>> tp2.to_camel_case(underscore_str3)
             "alreadyCamel"
     """
-    a=underscore_str.split('_')
-    if len(a) == 1:
-        return a[0]
-    a=[i.capitalize() for i in a if i != '']
-    a[0] = a[0].lower()
-    camelcase_str = ''.join(a)
+    if '_' not in underscore_str:
+        return underscore_str
+    inp=underscore_str.split('_')
+    inp=[i for i in inp if i != '']
+    inp=[inp[i].lower() if i == 0 else inp[i].capitalize() for i in range(len(inp))]    camelcase_str = ''.join(inp)
     return camelcase_str
